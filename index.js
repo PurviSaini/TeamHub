@@ -132,6 +132,65 @@ app.get("/team", function (req, res) {
   res.sendFile(__dirname + "/views/team.html");
 });
 
+//route to join team
+app.post("/join", async (req, res) => {
+  const teamCode = req.body.teamCode;
+  const memberEmail = req.body.memberEmail;
+  try {
+    // Find the team with the provided team code
+    let team = await Team.findOne({ code: teamCode });
+
+    // If team doesn't exist, create a new instance
+    if (!team) {
+      team = new Team({
+        code: teamCode,
+        members: [memberEmail], // Store the member's email in the members field
+      });
+    } else {
+      // Check if the team is not full (i.e., less than 4 members)
+      if (team.members.length >= 4) {
+        return res
+          .status(403)
+          .json({
+            success: false,
+            message: "Team is already full. Cannot add more members.",
+          });
+      }
+      // Add the user's email to the team's members
+      team.members.push(memberEmail);
+    }
+
+    // Save the team (either the existing one with updated members or the newly created one)
+    await team.save();
+    currTeamCode = teamCode;
+
+    res
+      .status(200)
+      .json({
+        success: true,
+        message: "You have successfully joined the team.",
+      });
+  } catch (err) {
+    console.error("Error joining team:", err);
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "An error occurred while joining the team.",
+      });
+  }
+});
+
+app.get("/logout", checkAuth, async (req, res) => {
+  try {
+    await req.session.destroy();
+    res.json({ success: true });
+  } catch (error) {
+    console.error("Error:", error);
+    res.json({ success: false });
+  }
+});
+
 app.listen(80, function () {
   console.log("Your app is listening on port " + 80);
 });
