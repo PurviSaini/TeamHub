@@ -1,0 +1,15 @@
+body,.card{
+    font-family: 'Inter', sans-serif;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(238,255,255,1) 0%, rgba(160,237,236,1) 98%);
+}
+.light-text{
+    font-weight: 600;
+}
+.bold-text{
+    font-weight: 900;
+
+}
+main{
+    display: none;
+}

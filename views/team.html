@@ -1,11 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team | Teamhub</title>
+    <title>Team | TeamHub</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Inter:wght@600;800&display=swap"
+        rel="stylesheet">
+    <!-- linking css -->
+    <link rel="stylesheet" href="/public/team.css">
+    <!-- linking bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
+
 <body>
-    
+
+    <!-- nav bar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="/public/img/logo.png" alt="logo" width="180rem"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    </li>
+                </ul>
+                <p id="userEmail" class="text-primary"> here username</p> &nbsp; &nbsp;&nbsp;&nbsp;
+                <button id="logoutBtn" class="btn btn-primary">logout</button>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="container-fluid border border-2 border-primary rounded p-3">
+        <button class="btn-toggle btn btn-primary mx-4" id="plan">Manage Tasks</button>
+        <button class="btn-toggle  btn btn-primary mx-4" id="fileShare">Team Docs</button>
+
+    </div>
+
+
+
+    <main id="section-plan">
+        <h1>Task Management System</h1>
+        <form id="taskForm">
+            <label for="title">Title:</label>
+            <input type="text" id="title" required>
+
+            <label for="description">Description:</label>
+            <textarea id="description" required></textarea>
+
+            <label for="dueDate">Due Date:</label>
+            <input type="date" id="dueDate" required>
+
+            <label for="assignedTo">Assigned To:</label>
+            <input type="text" id="assignedTo" required>
+
+            <label for="priority">Priority:</label>
+            <select id="priority" required>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+
+            <button type="submit">Create Task</button>
+        </form>
+
+        <div id="taskList">
+            <!-- Task items will be added here dynamically -->
+        </div>
+
+    </main>
+    <hr>
+    <main id="section-fileShare">
+        <!-- navbar -->
+        <!-- main content -->
+        <h1>File sharing</h1>
+        <form id="docForm">
+            <label for="title">Title:</label>
+            <input type="text" id="docTitle" required>
+
+            <label for="description">Description:</label>
+            <textarea id="docDescription" required></textarea>
+
+            <button type="submit">Add doc</button>
+        </form>
+
+        <div id="docList">
+            <!-- Task items will be added here dynamically -->
+        </div>
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- linking bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+
+    <!-- linking js file -->
+    <script src="/public/team.js"></script>
 </body>
+
 </html>
