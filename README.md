@@ -3,7 +3,7 @@ Where collaboration blooms, <br>
 In harmony, we break down rooms, <br>
 Login, share, and create with glee, <br>
 Join hands as one, united and free! <br>
-A platform where developers can create a team while participating in a hakathon, here they can experience the ease of sharing common resources to the team and divide the work amongst themselves while tracking their progress.
+A platform where developers can create a team while participating in a hackathon, here they can experience the ease of sharing common resources to the team and divide the work amongst themselves while tracking their progress.
 ## Inspiration:
 The inspiration for TeamHub came from my personal desire to revolutionize collaboration and team management. I noticed the challenges faced by individuals and teams while trying to coordinate tasks, share files, and work together efficiently. My aim was to create a seamless platform that fosters collaboration, boosts productivity, and enhances the overall teamwork experience. It is from my personal experiences that I felt the need for such a platform.
 
@@ -32,3 +32,18 @@ Throughout the development of TeamHub, I acquired valuable knowledge and hands-o
 
 ## What's next for TeamHub
 In the future, I envision expanding TeamHub's features and refining the existing ones based on user feedback. I plan to add more advanced collaboration tools, such as real-time chat and notifications, to foster even more efficient teamwork. Additionally, I aim to enhance the overall performance and scalability of the platform to accommodate a growing user base. Continuously updating and improving TeamHub will ensure that it remains a valuable tool for teams striving to achieve excellence in their collaborative endeavors.
+
+## Project Media
+### Login
+![Screenshot (116)](https://github.com/PurviSaini/TeamHub/assets/101940722/7eb9fee9-b416-47ad-8eac-9464d094429e)
+### Register
+![Screenshot (117)](https://github.com/PurviSaini/TeamHub/assets/101940722/7b4c3c72-61d3-4c45-9307-50e3f6d58c84)
+### Create Team
+![Screenshot (118)](https://github.com/PurviSaini/TeamHub/assets/101940722/2bee2798-5764-45af-81ea-664faf314ede)
+### Join Team
+![Screenshot (119)](https://github.com/PurviSaini/TeamHub/assets/101940722/0544dbd5-7133-4b25-9316-1cedb63d7826)
+## Team Dashboard
+![Screenshot (122)](https://github.com/PurviSaini/TeamHub/assets/101940722/cfef1546-bc74-4ae2-9556-27b373c98a81)
+
+
+
