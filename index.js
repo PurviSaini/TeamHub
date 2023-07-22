@@ -10,7 +10,7 @@ let currTeamCode = "";
 const User = require("./models/user.js");
 const Team = require("./models/team.js");
 const Task = require("./models/task.js");
-
+const sharedFiles = require("./models/docs.js");
 
 // Generate a random session secret
 const sessionSecret = crypto.randomBytes(32).toString("hex");
@@ -259,6 +259,70 @@ app.delete("/tasks/:id", async (req, res) => {
 });
 
 
+//API endpoint to create a new doc
+app.post("/newDoc", async (req, res) => {
+  try {
+    const { title, description } = req.body;
+    console.log(title,description)
+    const existingDoc = await sharedFiles.findOne({ currTeamCode });
+
+    if (existingDoc) {
+      // If a Doc exists for the team code, add the new task to it
+      existingDoc.docs.push({
+        title,
+        description
+        
+      });
+      await existingDoc.save();
+      res.status(201).json(existingDoc);
+    } else {
+      // If no task exists for the team code, create a new task and store it with the team code
+      const newDoc = await sharedFiles.create({
+        code: currTeamCode,
+        docs: [{ title, description }],
+      });
+      newDoc.save();
+      res.status(201).json(newDoc);
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to create Doc." });
+  }
+});
+
+
+//GET ALREADY EXISTING docs
+app.get("/getDocs", async (req, res) => {
+  try {
+    // Find the docs associated with the team code
+    const docs = await sharedFiles.find({ code: currTeamCode });
+    console.log(docs)
+    if (docs) {
+      res.status(200).json(docs);
+    } else {
+      res.status(404).json({ message: "No docs found for the team code." });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to fetch docs." });
+  }
+});
+
+
+// Route to handle DELETE requests for deleting a specific doc based on its ID
+app.delete("/docs/:id", async (req, res) => {
+  try {
+    const deletedDoc = await sharedFiles.findOneAndDelete({ _id: req.params.id });
+    if (deletedDoc) {
+      res.json(deletedDoc);
+    } else {
+      res.status(404).json({ error: "doc not found." });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to delete doc." });
+  }
+});
 
 app.listen(80, function () {
   console.log("Your app is listening on port " + 80);
