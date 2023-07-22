@@ -1,1 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | TeamHub</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Inter:wght@600;800&display=swap"
+        rel="stylesheet">
+    <!-- linking bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="/public/login.css">
+</head>
+
+<body>
+
+    <!-- nav bar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="/public/img/logo.png" alt="logo" width="180rem"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    </li>
+                </ul>
+                <p id="userEmail" class="text-primary"> here username</p> &nbsp; &nbsp;&nbsp;&nbsp;
+                <button id="logoutBtn" class="btn btn-primary">logout</button>
+            </div>
+
+        </div>
+    </nav>
+    <div class="container-fluid my-5">
+        <h1 class="text-center fw-bold my-5 fs-1" style="letter-spacing: 4px;">Welcome <span
+                class="fst-italic pb-2 mb-4 text-primary border-bottom border-primary">Technophile</span> </h1>
+        <h2 class="text-center fw-bold">Click on create your team to get your unique team code!!</h2>
+        <div class="container d-flex justify-content-center align-items-center">
+            <div class="container text-center">
+                <button id="createTeam" class="btn btn-lg btn-primary text-center fs-1">create your team</button>
+                <p id="teamCode" class="my-4 border border-2 rounded p-2 border-primary">here comes your unique team
+                    code</p>
+                <p>copy this code and join from below <br>share this code with your team members.</p>
+            </div>
+            <div class="container" id="float">
+                <img src="/public/img/create_team.png" alt="create team">
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid my-5">
+        <h2 class="text-center fw-bold mb-5">Join from here to work with your team mates!!</h2>
+        <div class="container d-flex justify-content-center align-items-center">
+            <div class="container" id="float">
+                <img src="/public/img/join_team.png" alt="create team">
+            </div>
+            <div class="container text-center mt-5">
+                <p>paste the team code here</p>
+                <input type="text" id="joinTeamCode" class="fs-3 border-2 border rounded border-primary p-3"> <br> <br>
+                <input type="submit" id="joinBtn" value="JOIN" class="btn btn-primary btn-lg">
+            </div>
+
+        </div>
+    </div>
+    <br> <br> <br>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script src="/public/main.js"></script>
+</body>
+
+</html>
