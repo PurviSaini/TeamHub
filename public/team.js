@@ -117,6 +117,7 @@ const showTasks = async (event) => {
     const taskItem = document.createElement("div");
     taskItem.className = "task-item container my-3  p-3 border border-primary border-3 rounded";
     taskItem.style.boxShadow="5px 10px 8px 10px #888888";
+    taskItem.style.backgroundImage="url(/public/img/4.png)";
 
     const taskTitle = document.createElement("h2");
     taskTitle.className="text-center bold-text"
@@ -248,6 +249,8 @@ const showTasks = async (event) => {
     docItem.className = "doc-item";
     docItem.className = "doc-item container my-3  p-3 border border-primary border-3 rounded";
     docItem.style.boxShadow="5px 10px 8px 10px #888888";
+    docItem.style.backgroundImage="url(/public/img/4.png)";
+
 
     const docTitle = document.createElement("h2");
     docTitle.textContent = doc["docs"][0].title;

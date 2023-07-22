@@ -1,7 +1,6 @@
 body,.card{
     font-family: 'Inter', sans-serif;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(238,255,255,1) 0%, rgba(160,237,236,1) 98%);
+    background: #EBFEFE;
 }
 .light-text{
     font-weight: 600;
@@ -34,3 +33,25 @@ body,.card{
        }
     
     }
+/* typewriting animation */
+  
+.typewriting-text {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+  }
+  /* The typing effect */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+ @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: rgb(22, 3, 104); }
+}
