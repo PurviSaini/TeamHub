@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Inter:wght@600;800&display=swap"
         rel="stylesheet">
+        <!-- font awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- linking css -->
     <link rel="stylesheet" href="/public/team.css">
     <!-- linking bootstrap -->
@@ -20,7 +22,7 @@
 <body>
 
     <!-- nav bar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary ">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="/public/img/logo.png" alt="logo" width="180rem"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
@@ -38,44 +40,52 @@
         </div>
     </nav>
 
-    <div class="container-fluid border border-2 border-primary rounded p-3">
-        <button class="btn-toggle btn btn-primary mx-4" id="plan">Manage Tasks</button>
-        <button class="btn-toggle  btn btn-primary mx-4" id="fileShare">Team Docs</button>
-
+    <div class="container-fluid border border-2 border-primary rounded light-text p-3 bg-dark-blue">
+        <button class="btn-toggle btn btn-light mx-4" id="plan">Manage Tasks</button>
+        <button class="btn-toggle  btn btn-light mx-4" id="fileShare">Team Docs</button>
     </div>
 
-
-
-    <main id="section-plan">
-        <h1>Task Management System</h1>
-        <form id="taskForm">
-            <label for="title">Title:</label>
-            <input type="text" id="title" required>
-
-            <label for="description">Description:</label>
-            <textarea id="description" required></textarea>
-
-            <label for="dueDate">Due Date:</label>
-            <input type="date" id="dueDate" required>
-
-            <label for="assignedTo">Assigned To:</label>
-            <input type="text" id="assignedTo" required>
-
-            <label for="priority">Priority:</label>
-            <select id="priority" required>
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
-            </select>
-
-            <button type="submit">Create Task</button>
-        </form>
-
-        <div id="taskList">
-            <!-- Task items will be added here dynamically -->
+<!-- container storing manage tasks -->
+    <div class="container-fluid light-text">
+        <main id="section-plan">
+            <form id="taskForm" class="my-2 p-3">
+            <h2 class="bold-text">Add new tasks <i class="fa fa-plus-circle"></i></h2>
+                <div class="row">
+                    <div class="col">
+                        <label for="title">Title:</label>
+                        <input type="text" id="title" class="p-1 border border-primary rounded" required>
+                    </div>
+                    
+                    <div class="col">
+                        <label for="dueDate">Due Date:</label>
+                        <input type="date" id="dueDate" required class="p-1 border border-primary rounded">
+                    </div>
+                    <div class="col">
+                        <label for="assignedTo">Assigned To:</label>
+                        <input type="text" id="assignedTo" required class="p-1 border border-primary rounded">
+                    </div>
+                    <div class="col">  
+                    <label for="priority">Priority:</label>
+                    <select id="priority" required class="p-1 border border-primary rounded form-select" >
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+                    <label for="description">Description:</label>
+                    <textarea id="description" required class="p-1 border border-primary rounded form-control"></textarea>        
+                <br>
+                <button type="submit" class="mt-3 btn btn-primary">Create Task</button>
+            </form>
+            <div class="container bg-light mt-5">
+            <div id="taskList" class="p-3">
+           <h2 class="bold-text text-center">Task List</h2>
+                <!-- Task items will be added here dynamically -->
+            </div>
         </div>
-
-    </main>
+        </main>
+    </div>
+   
     <hr>
     <main id="section-fileShare">
         <!-- navbar -->
@@ -95,7 +105,6 @@
             <!-- Task items will be added here dynamically -->
         </div>
     </main>
-
 
 
 

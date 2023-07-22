@@ -9,6 +9,7 @@ let currTeamCode = "";
 //including models
 const User = require("./models/user.js");
 const Team = require("./models/team.js");
+const Task = require("./models/task.js");
 
 
 // Generate a random session secret
@@ -190,6 +191,74 @@ app.get("/logout", checkAuth, async (req, res) => {
     res.json({ success: false });
   }
 });
+
+//routes for tasks
+// API endpoint to create a new task
+app.post("/tasks", async (req, res) => {
+  try {
+    const { title, description, dueDate, assignedTo, priority } = req.body;
+    const existingTask = await Task.findOne({ currTeamCode });
+
+    if (existingTask) {
+      // If a task exists for the team code, add the new task to it
+      existingTask.tasks.push({
+        title,
+        description,
+        dueDate,
+        assignedTo,
+        priority,
+        
+      });
+      await existingTask.save();
+      res.status(201).json(existingTask);
+    } else {
+      // If no task exists for the team code, create a new task and store it with the team code
+      const newTask = await Task.create({
+        code: currTeamCode,
+        tasks: [{ title, description, dueDate, assignedTo, priority }],
+      });
+      newTask.save();
+      res.status(201).json(newTask);
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to create task." });
+  }
+});
+
+//GET ALREADY EXISTING TASKS
+app.get("/getTasks", async (req, res) => {
+  try {
+    // Find the tasks associated with the team code
+    const tasks = await Task.find({ code: currTeamCode });
+
+    if (tasks) {
+      // console.log("tasks get send");
+      res.status(200).json(tasks);
+    } else {
+      res.status(404).json({ message: "No tasks found for the team code." });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to fetch tasks." });
+  }
+});
+// Route to handle DELETE requests for deleting a specific task based on its ID
+app.delete("/tasks/:id", async (req, res) => {
+  try {
+    const deletedTask = await Task.findOneAndDelete({ _id: req.params.id });
+    if (deletedTask) {
+      res.json(deletedTask);
+    } else {
+      res.status(404).json({ error: "Task not found." });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to delete task." });
+  }
+});
+
+
 
 app.listen(80, function () {
   console.log("Your app is listening on port " + 80);

@@ -13,3 +13,7 @@ body,.card{
 main{
     display: none;
 }
+.bg-dark-blue{
+    background-color: rgb(7, 89, 197);
+    color: rgb(221, 235, 247);
+}
