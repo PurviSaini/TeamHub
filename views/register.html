@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register | TeamHub</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Inter:wght@600;800&display=swap" rel="stylesheet">
+    <!-- linking bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="/public/login.css">
+</head>
+<body>
+    <div class="container my-5 text-center">
+        <div class="row">
+          <div class="col">
+            <form class="container border border-info rounded border-5 p-5"  id="registerForm">
+                <div class="mb-3">
+                    <h3 class="bold-text mb-2 "> <span class="h4 pb-2 mb-4 border-bottom border-primary bold-text">REGISTER</span>  </h3> <br>
+                  <label for="email" class="form-label h6 pb-2 mb-4 text-primary border-bottom border-primary">Email address</label>
+                  <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" required>
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label h6 pb-2 mb-4 text-primary border-bottom border-primary">Password</label>
+                  <input type="password" class="form-control" id="password" placeholder="Shh, it's secret" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg">Register</button>
+              </form>
+
+          </div>
+          <div class="col">
+            <div class="card border-0">
+                <div class="card-body">
+                <h5 class="card-title">
+                <img src="/public/img/logo.png" alt="Team hub logo">
+                </h5>
+                  <p class="card-text">Team Hub, where collaboration blooms, In harmony, we break down rooms, Login, share, and create with glee, Join hands as one, united and free!</p>
+                </div>
+                <div id="float">
+                <img src="/public/img/register.png" class="card-img-bottom" alt="login to your account" height="400rem">
+            </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- linking bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+   
+
+    <!-- original code -->
+    <!-- <h1>Register</h1>
+    <form id="registerForm">
+        <input type="email" id="email" placeholder="email" required> <br><br>
+        <input type="password" id="password" placeholder="Shh, it's secret" required> <br><br>
+        <input type="submit" value="register">
+    </form> -->
+    <!-- linking js file -->
+    <script src="/public/register.js"></script>
+</body>
+</html>

@@ -41,6 +41,10 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + "/views/login.html");
 });
 
+app.get("/register", (req, res) => {
+  res.sendFile(__dirname + "/views/register.html");
+});
+
 app.listen(80, function () {
   console.log("Your app is listening on port " + 80);
 });
