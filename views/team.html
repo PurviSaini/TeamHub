@@ -31,6 +31,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li>
+                        <button class="btn-toggle btn btn-primary mx-3" id="plan">Manage Tasks</button>
+                    </li>
+                    <li>
+                        <button class="btn-toggle  btn btn-primary mx-3" id="fileShare">Team Docs</button>
                     </li>
                 </ul>
                 <p id="userEmail" class="text-primary"> here username</p> &nbsp; &nbsp;&nbsp;&nbsp;
@@ -40,13 +45,8 @@
         </div>
     </nav>
 
-    <div class="container-fluid border border-2 border-primary rounded light-text p-2 bg-dark-blue">
-        <button class="btn-toggle btn btn-light mx-3" id="plan">Manage Tasks</button>
-        <button class="btn-toggle  btn btn-light mx-3" id="fileShare">Team Docs</button>
-    </div>
-
 <!-- container storing manage tasks -->
-    <div class="container-fluid light-text" style="background-image: url(/public/img/bg_list.png);">
+    <div class="container-fluid light-text" style="background-image: url(/public/img/blue_bg.png);">
         <main id="section-plan" class="ms-5">
             <form id="taskForm" class="my-2 p-3">
             <h2 class="bold-text">Add new tasks <i class="fa fa-plus-circle"></i></h2>
@@ -86,7 +86,7 @@
         </main>
     </div>
    
-    <div class="container-fluid light-text" style="background-image: url(/public/img/bg_list.png);">
+    <div class="container-fluid light-text" style="background-image: url(/public/img/blue_bg.png);">
         <main id="section-fileShare" class="ms-5">
             <form id="docForm" class="my-2 p-3">
             <h2 class="bold-text">Upload Documents here <i class="fa fa-file-text"></i></h2>

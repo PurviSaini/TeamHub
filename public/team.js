@@ -125,7 +125,9 @@ const showTasks = async (event) => {
     taskItem.appendChild(taskTitle);
   
     const taskDescription = document.createElement("p");
-    taskDescription.className=" bg-dark-blue  p-2 rounded text-center "
+    taskDescription.className="p-2 text-center "
+    taskDescription.style.backgroundImage="url(/public/img/blue_bg.png)"
+    taskDescription.style.backgroundPosition="right";
     taskDescription.textContent = task["tasks"][0].description;
     taskItem.appendChild(taskDescription);
   
@@ -258,7 +260,9 @@ const showTasks = async (event) => {
     docItem.appendChild(docTitle);
   
     const docDescription = document.createElement("p");
-    docDescription.className=" bg-dark-blue  p-2 rounded text-center "
+    docDescription.className="p-2 text-center"
+    docDescription.style.backgroundImage="url(/public/img/blue_bg.png)"
+    docDescription.style.backgroundPosition="right";
     docDescription.textContent = doc["docs"][0].description;
     docItem.appendChild(docDescription);
   
