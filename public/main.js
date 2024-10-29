@@ -1,16 +1,3 @@
-// Check if the user is already logged in
-fetch("/checkAuth")
-  .then((response) => response.json())
-  .then((data) => {
-    if (data.loggedIn) {
-      document.getElementById("logoutBtn").style.display = "block";
-    } else {
-      document.getElementById("logoutBtn").style.display = "none";
-    }
-  })
-  .catch((error) => {
-    console.error("Error:", error);
-  });
 document
   .getElementById("logoutBtn")
   .addEventListener("click", function (event) {

@@ -1,37 +1,21 @@
 const express = require("express");
-const session = require("express-session");
 const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
+const {userAuth} = require('./middlewares/auth');
 const crypto = require("crypto");
 require("dotenv").config();
 let currTeamCode = "";
 //including models
-const User = require("./models/user.js");
+const User = require("./models/User.js");
 const Team = require("./models/team.js");
 const Task = require("./models/task.js");
 const sharedFiles = require("./models/docs.js");
 
-// Generate a random session secret
-const sessionSecret = crypto.randomBytes(32).toString("hex");
 //middlewares
-
-// The session middleware
-app.use(
-  session({
-    secret: sessionSecret,
-    resave: false,
-    saveUninitialized: true,
-  })
-);
-// Middleware to check if the user is authenticated
-function checkAuth(req, res, next) {
-  if (req.session && req.session.user) {
-    next();
-  } else {
-    res.json({ loggedIn: false });
-  }
-}
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/public", express.static(__dirname + "/public"));
@@ -58,7 +42,7 @@ app.get("/register", (req, res) => {
   res.sendFile(__dirname + "/views/register.html");
 });
 
-app.get("/main", (req, res) => {
+app.get("/main",userAuth, (req, res) => {
   res.sendFile(__dirname + "/views/main.html");
 });
 
@@ -66,7 +50,6 @@ app.get("/main", (req, res) => {
 app.post("/register", async (req, res) => {
   const { email, password } = req.body;
 
-  // Create a new user
   try {
     // Create a new user
     const user = new User({ email, password });
@@ -81,12 +64,16 @@ app.post("/register", async (req, res) => {
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
-  // Find user by email and password
   try {
     // Find user by email and password
     const user = await User.findOne({ email, password });
     if (user) {
-      req.session.user = user; // Store user data in the session
+      //1. Create JWT Token
+    const token = await jwt.sign({_id: user._id}, process.env.JWT_SECRET);
+
+    //2. Add the token to cookie and send the reponse back to the user
+    res.cookie('token', token);
+    
       res.json({ success: true, userEmail: user.email });
     } else {
       res.json({ success: false });
@@ -115,21 +102,12 @@ app.post("/checkTeamMembership", async (req, res) => {
   }
 });
 
-app.get("/checkAuth", checkAuth, (req, res) => {
-  res.json({ loggedIn: true });
-});
-
-app.get("/logout", checkAuth, async (req, res) => {
-  try {
-    await req.session.destroy();
+app.get("/logout", async (req, res) => {
+    res.clearCookie('token');
     res.json({ success: true });
-  } catch (error) {
-    console.error("Error:", error);
-    res.json({ success: false });
-  }
 });
 
-app.get("/team", function (req, res) {
+app.get("/team", userAuth, function (req, res) {
   res.sendFile(__dirname + "/views/team.html");
 });
 
@@ -182,16 +160,6 @@ app.post("/join", async (req, res) => {
   }
 });
 
-app.get("/logout", checkAuth, async (req, res) => {
-  try {
-    await req.session.destroy();
-    res.json({ success: true });
-  } catch (error) {
-    console.error("Error:", error);
-    res.json({ success: false });
-  }
-});
-
 //routes for tasks
 // API endpoint to create a new task
 app.post("/tasks", async (req, res) => {
@@ -233,7 +201,6 @@ app.get("/getTasks", async (req, res) => {
     const tasks = await Task.find({ code: currTeamCode });
 
     if (tasks) {
-      // console.log("tasks get send");
       res.status(200).json(tasks);
     } else {
       res.status(404).json({ message: "No tasks found for the team code." });
@@ -263,7 +230,7 @@ app.delete("/tasks/:id", async (req, res) => {
 app.post("/newDoc", async (req, res) => {
   try {
     const { title, description } = req.body;
-    console.log(title,description)
+    // console.log(title,description)
     const existingDoc = await sharedFiles.findOne({ currTeamCode });
 
     if (existingDoc) {
@@ -296,7 +263,7 @@ app.get("/getDocs", async (req, res) => {
   try {
     // Find the docs associated with the team code
     const docs = await sharedFiles.find({ code: currTeamCode });
-    console.log(docs)
+    // console.log(docs)
     if (docs) {
       res.status(200).json(docs);
     } else {

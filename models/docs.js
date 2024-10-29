@@ -11,5 +11,5 @@ const sharedFilesSchema= new mongoose.Schema({
   });
   
   // Create sharedFiles model
-  const sharedFiles = mongoose.model("sharedFiles", sharedFilesSchema);
-module.exports = mongoose.model("sharedFiles", sharedFilesSchema);
+  const sharedFiles = mongoose.model("docs", sharedFilesSchema);
+module.exports = mongoose.model("docs", sharedFilesSchema);
