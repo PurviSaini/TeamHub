@@ -5,7 +5,6 @@ const bodyParser = require("body-parser");
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const {userAuth} = require('./middlewares/auth');
-const crypto = require("crypto");
 require("dotenv").config();
 let currTeamCode = "";
 //including models
