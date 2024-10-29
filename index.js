@@ -9,9 +9,9 @@ require("dotenv").config();
 let currTeamCode = "";
 //including models
 const User = require("./models/User.js");
-const Team = require("./models/team.js");
-const Task = require("./models/task.js");
-const sharedFiles = require("./models/docs.js");
+const Team = require("./models/Team.js");
+const Task = require("./models/Task.js");
+const sharedFiles = require("./models/Docs.js");
 
 //middlewares
 app.use(cookieParser());
